@@ -8,17 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class StartscreenController: UIViewController {
+    
     @IBOutlet weak var imgCar: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildGUI()
     }
-
-    func buildGUI(){
-      
-    }
-
+    
+  
+    
 }
 

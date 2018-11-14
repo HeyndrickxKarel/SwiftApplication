@@ -12,6 +12,9 @@
 		EF8FC4AF219742C000162DD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4AD219742C000162DD3 /* Main.storyboard */; };
 		EF8FC4B1219742C100162DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4B0219742C100162DD3 /* Assets.xcassets */; };
 		EF8FC4B4219742C100162DD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4B2219742C100162DD3 /* LaunchScreen.storyboard */; };
+		EFF83725219B5E4300688FF0 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFF83724219B5E4300688FF0 /* FontAwesome.otf */; };
+		EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372B219C407700688FF0 /* StartscreenController.swift */; };
+		EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		EF8FC4B0219742C100162DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF8FC4B3219742C100162DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF8FC4B5219742C100162DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFF83724219B5E4300688FF0 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "../../../../../../../Downloads/fontawesome-free-5.5.0-desktop/otfs/FontAwesome.otf"; sourceTree = "<group>"; };
+		EFF8372B219C407700688FF0 /* StartscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenController.swift; sourceTree = "<group>"; };
+		EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,9 @@
 		EF8FC4A8219742C000162DD3 /* RijQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				EFF8372A219C404700688FF0 /* Models */,
+				EFF83728219C402500688FF0 /* View Controllers */,
+				EFF83720219B59B900688FF0 /* Fonts */,
 				EF8FC4A9219742C000162DD3 /* AppDelegate.swift */,
 				EF8FC4AB219742C000162DD3 /* ViewController.swift */,
 				EF8FC4AD219742C000162DD3 /* Main.storyboard */,
@@ -62,6 +71,30 @@
 				EF8FC4B5219742C100162DD3 /* Info.plist */,
 			);
 			path = RijQuiz;
+			sourceTree = "<group>";
+		};
+		EFF83720219B59B900688FF0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EFF83724219B5E4300688FF0 /* FontAwesome.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EFF83728219C402500688FF0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EFF8372B219C407700688FF0 /* StartscreenController.swift */,
+				EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EFF8372A219C404700688FF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,6 +157,7 @@
 			files = (
 				EF8FC4B4219742C100162DD3 /* LaunchScreen.storyboard in Resources */,
 				EF8FC4B1219742C100162DD3 /* Assets.xcassets in Resources */,
+				EFF83725219B5E4300688FF0 /* FontAwesome.otf in Resources */,
 				EF8FC4AF219742C000162DD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */,
+				EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */,
 				EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */,
 				EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */,
 			);
