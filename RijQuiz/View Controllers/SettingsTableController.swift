@@ -10,46 +10,84 @@ import UIKit
 
 class SettingsTableController: UITableViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var stpSecondenVraag: UIStepper!
-    @IBOutlet weak var stpAantalVragen: UIStepper!
-    @IBOutlet weak var txtAantalVragen: UITextField!
-    @IBOutlet weak var txtSecondenVraag: UITextField!
+    @IBOutlet weak var btnSave: UIBarButtonItem!
+    @IBOutlet weak var stpSecondsPerQuestion: UIStepper!
+    @IBOutlet weak var stpAmountOfQuestions: UIStepper!
+    @IBOutlet weak var txtAmountOfQuestions: UITextField!
+    @IBOutlet weak var txtSecondsPerQuestion: UITextField!
     
-    @IBOutlet weak var swtHerkansing: UISwitch!
+    @IBOutlet weak var swtRedo: UISwitch!
     
-    @IBOutlet weak var swtToonAntwoord: UISwitch!
+    @IBOutlet weak var swtSaveQuiz: UISwitch!
+    @IBOutlet weak var swtShowAnswer: UISwitch!
     
     @IBOutlet weak var btnReset: UIButton!
     
-    var vorigeWaardeStpSecondenVraag : Double = 15
-    var vorigeWaardeStpAantalVragen : Double = 15
-    let minimumSecondenVraag : Int = 5
-    let maximumSecondenVraag : Int = 60
-    let maxiumumAantalVragen: Int = 100
-    let standaardAantalVragen : Int = 50
-    let standaardAantalSeconden : Int = 15
-    let minimumAantalVragen : Int = 1
-    let standaardToonAntwoord : Bool = false
-    let standaardHerkansing : Bool = false
+    var previousValueStpSecondsPerQuestion : Double = 15
+    var previousValueStpAmountOfQuestions : Double = 15
+    let minimumSecondsPerQuestion : Int = 5
+    let maximumSecondsPerQuestion : Int = 60
+    let maxiumumAmountOfQuestions: Int = 100
+    let standardAmountOfQuestions : Int = 50
+    let standardSecondsPerQuestion : Int = 15
+    let minimumAmountOfQuestions : Int = 1
+    let standardShowAnswer : Bool = false
+    let standardRedo : Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        txtAantalVragen.delegate = self
-        txtSecondenVraag.delegate = self
+        txtAmountOfQuestions.delegate = self
+        txtSecondsPerQuestion.delegate = self
+        
+        loadData()
         
     }
     
+    func loadData(){
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveUrl = documentsDirectory.appendingPathComponent("settings").appendingPathExtension("plist")
+        
+        let propertyListDecoder = PropertyListDecoder()
+        if let retrievedPersonalSettings = try? Data(contentsOf: archiveUrl), let decodedPersonalSettings = try? propertyListDecoder.decode(Settings.self, from: retrievedPersonalSettings){
+            txtAmountOfQuestions.text = String(decodedPersonalSettings.amountOfQuestions)
+            txtSecondsPerQuestion.text = String(decodedPersonalSettings.secondsPerQuestion)
+            swtRedo.isOn = decodedPersonalSettings.redo
+            swtShowAnswer.isOn = decodedPersonalSettings.showAnswer
+        }
+    }
+    
+    @IBAction func btnSaveTapped(_ sender: Any) {
+        let secondsPerQuestion:Int! = Int(txtSecondsPerQuestion.text!)
+        let amountOfQuestions:Int! = Int(txtAmountOfQuestions.text!)
+        let showAnswer = swtShowAnswer.isOn
+        let redo = swtRedo.isOn
+        let saveQuiz = swtSaveQuiz.isOn
+        
+        let personalSettings = Settings(secondsPerQuestion: secondsPerQuestion, amountOfQuestions: amountOfQuestions, showAnswer: showAnswer, redo: redo, saveQuiz: saveQuiz)
+        
+        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let archiveUrl = documentsDirectory.appendingPathComponent("personal_settings").appendingPathExtension("plist")
+        
+        let propertyListEncoder = PropertyListEncoder()
+        let encodedSettings = try? propertyListEncoder.encode(personalSettings)
+        try? encodedSettings?.write(to: archiveUrl, options: .noFileProtection)
+        
+        
+    }
+    
+    
     @IBAction func btnResetTriggered(_ sender: Any) {
-        vorigeWaardeStpSecondenVraag = Double(standaardAantalSeconden)
-        vorigeWaardeStpAantalVragen = Double(standaardAantalVragen)
-        txtAantalVragen.text =  String(standaardAantalVragen)
-        txtSecondenVraag.text = String(standaardAantalSeconden)
-        swtHerkansing.isOn = false
-        swtToonAntwoord.isOn = false
-        stpAantalVragen.value = Double(standaardAantalVragen)
-        stpSecondenVraag.value = Double(standaardAantalSeconden)
+        previousValueStpSecondsPerQuestion = Double(standardSecondsPerQuestion)
+        previousValueStpAmountOfQuestions = Double(standardAmountOfQuestions)
+        txtAmountOfQuestions.text =  String(standardAmountOfQuestions)
+        txtSecondsPerQuestion.text = String(standardSecondsPerQuestion)
+        swtRedo.isOn = false
+        swtShowAnswer.isOn = false
+        stpAmountOfQuestions.value = Double(standardAmountOfQuestions)
+        stpSecondsPerQuestion.value = Double(standardSecondsPerQuestion)
     }
     // Deze functie zorgt er voor dat er enkel cijfers kunnen ingegeven worden in de textfields
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -62,59 +100,59 @@ class SettingsTableController: UITableViewController, UITextFieldDelegate {
     /* Hieronder staan de controlefuncties om te controleren of de gebruiker niet buiten de grenswaarden gaat van het aantal vragen en het aantal seconden per vraag. Deze waarden kunnen aangepast worden door gebruik van een stepper en alsook door in te geven in een textfield. */
     @IBAction func stpAantalVragenTriggered(_ sender: UIStepper) {
         
-        var waarde:Int! = Int(txtAantalVragen.text!)
+        var value:Int! = Int(txtAmountOfQuestions.text!)
     
-        if waarde == nil{
-            waarde = 1
+        if value == nil{
+            value = 1
         }
     
-        if sender.value > vorigeWaardeStpAantalVragen {
-            waarde += 1
+        if sender.value > previousValueStpAmountOfQuestions {
+            value += 1
         } else {
-            waarde -= 1
+            value -= 1
         }
-        txtAantalVragen.text = String(waarde)
-        sender.value = Double(waarde)
-        vorigeWaardeStpAantalVragen = Double(waarde)
+        txtAmountOfQuestions.text = String(value)
+        sender.value = Double(value)
+        previousValueStpAmountOfQuestions = Double(value)
     }
     
     
     @IBAction func stpSecondenVraagTriggered(_ sender: UIStepper) {
-        var waarde:Int! = Int(txtSecondenVraag.text!)
+        var value:Int! = Int(txtSecondsPerQuestion.text!)
         
-        if waarde == nil{
-            waarde = 1
+        if value == nil{
+            value = 1
         }
         
-        if sender.value > vorigeWaardeStpSecondenVraag {
-            waarde += 1
+        if sender.value > previousValueStpSecondsPerQuestion {
+            value += 1
         } else {
-            waarde -= 1
+            value -= 1
         }
-        txtSecondenVraag.text = String(waarde)
-        sender.value = Double(waarde)
-        vorigeWaardeStpSecondenVraag = Double(waarde)
+        txtSecondsPerQuestion.text = String(value)
+        sender.value = Double(value)
+        previousValueStpSecondsPerQuestion = Double(value)
     }
     
     @IBAction func txtAantalVragenAangepast(_ sender: Any) {
-        var waarde:Int! = Int(txtAantalVragen.text!)
+        var value:Int! = Int(txtAmountOfQuestions.text!)
         
-        if waarde == nil || waarde < minimumAantalVragen{
-            waarde = minimumAantalVragen
-        } else if waarde > maxiumumAantalVragen {
-            waarde = maxiumumAantalVragen
+        if value == nil || value < minimumAmountOfQuestions{
+            value = minimumAmountOfQuestions
+        } else if value > maxiumumAmountOfQuestions {
+            value = maxiumumAmountOfQuestions
         }
-        txtAantalVragen.text = String(waarde)
+        txtAmountOfQuestions.text = String(value)
     }
     @IBAction func txtSecondenVraagAangepast(_ sender: Any) {
-        var waarde:Int! = Int(txtSecondenVraag.text!)
+        var value:Int! = Int(txtSecondsPerQuestion.text!)
         
-        if waarde == nil || waarde < minimumSecondenVraag{
-            waarde = minimumSecondenVraag
-        } else if waarde > maximumSecondenVraag {
-            waarde = maximumSecondenVraag
+        if value == nil || value < minimumSecondsPerQuestion{
+            value = minimumSecondsPerQuestion
+        } else if value > maximumSecondsPerQuestion {
+            value = maximumSecondsPerQuestion
         }
-        txtSecondenVraag.text = String(waarde)
+        txtSecondsPerQuestion.text = String(value)
     }
    
 }

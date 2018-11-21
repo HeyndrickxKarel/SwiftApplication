@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         UINavigationBar.appearance().tintColor = UIColorFromHex(rgbValue: 0x5da074, alpha: 1.0)
-        UINavigationBar.appearance().backgroundColor = UIColorFromHex(rgbValue: 0x3af29c, alpha: 1.0)
+        UINavigationBar.appearance().backgroundColor = UIColorFromHex(rgbValue: 0x13a741, alpha: 1.0)
         
         return true
     }

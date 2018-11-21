@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF39E64721A328540028EFA1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF39E64621A328540028EFA1 /* FontAwesome.otf */; };
+		EF39E64B21A335090028EFA1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E64A21A335090028EFA1 /* Settings.swift */; };
 		EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FC4A9219742C000162DD3 /* AppDelegate.swift */; };
 		EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FC4AB219742C000162DD3 /* ViewController.swift */; };
 		EF8FC4AF219742C000162DD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4AD219742C000162DD3 /* Main.storyboard */; };
 		EF8FC4B1219742C100162DD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4B0219742C100162DD3 /* Assets.xcassets */; };
 		EF8FC4B4219742C100162DD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF8FC4B2219742C100162DD3 /* LaunchScreen.storyboard */; };
-		EFF83725219B5E4300688FF0 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EFF83724219B5E4300688FF0 /* FontAwesome.otf */; };
+		EFB9B25B21A466AC00F15B66 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B25A21A466AC00F15B66 /* Quiz.swift */; };
+		EFB9B25D21A466CC00F15B66 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B25C21A466CC00F15B66 /* Question.swift */; };
+		EFB9B26121A46CB700F15B66 /* QuestionscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26021A46CB700F15B66 /* QuestionscreenController.swift */; };
+		EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26321A4740C00F15B66 /* ShadowButton.swift */; };
+		EFB9B26621A485E000F15B66 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26521A485E000F15B66 /* Header.swift */; };
+		EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26721A487EB00F15B66 /* Paragraph.swift */; };
+		EFB9B26C21A4AFFC00F15B66 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */; };
 		EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372B219C407700688FF0 /* StartscreenController.swift */; };
 		EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF39E64621A328540028EFA1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
+		EF39E64A21A335090028EFA1 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF8FC4A6219742C000162DD3 /* RijQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RijQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF8FC4A9219742C000162DD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF8FC4AB219742C000162DD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +35,13 @@
 		EF8FC4B0219742C100162DD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF8FC4B3219742C100162DD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF8FC4B5219742C100162DD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFF83724219B5E4300688FF0 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.otf; path = "../../../../../../../Downloads/fontawesome-free-5.5.0-desktop/otfs/FontAwesome.otf"; sourceTree = "<group>"; };
+		EFB9B25A21A466AC00F15B66 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		EFB9B25C21A466CC00F15B66 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		EFB9B26021A46CB700F15B66 /* QuestionscreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QuestionscreenController.swift; path = RijQuiz/QuestionscreenController.swift; sourceTree = SOURCE_ROOT; };
+		EFB9B26321A4740C00F15B66 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
+		EFB9B26521A485E000F15B66 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		EFB9B26721A487EB00F15B66 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
+		EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		EFF8372B219C407700688FF0 /* StartscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenController.swift; sourceTree = "<group>"; };
 		EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +76,7 @@
 		EF8FC4A8219742C000162DD3 /* RijQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				EFB9B26221A473E400F15B66 /* Components */,
 				EFF8372A219C404700688FF0 /* Models */,
 				EFF83728219C402500688FF0 /* View Controllers */,
 				EFF83720219B59B900688FF0 /* Fonts */,
@@ -73,10 +90,21 @@
 			path = RijQuiz;
 			sourceTree = "<group>";
 		};
+		EFB9B26221A473E400F15B66 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EFB9B26321A4740C00F15B66 /* ShadowButton.swift */,
+				EFB9B26521A485E000F15B66 /* Header.swift */,
+				EFB9B26721A487EB00F15B66 /* Paragraph.swift */,
+				EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		EFF83720219B59B900688FF0 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EFF83724219B5E4300688FF0 /* FontAwesome.otf */,
+				EF39E64621A328540028EFA1 /* FontAwesome.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -84,6 +112,7 @@
 		EFF83728219C402500688FF0 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EFB9B26021A46CB700F15B66 /* QuestionscreenController.swift */,
 				EFF8372B219C407700688FF0 /* StartscreenController.swift */,
 				EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */,
 			);
@@ -93,6 +122,9 @@
 		EFF8372A219C404700688FF0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF39E64A21A335090028EFA1 /* Settings.swift */,
+				EFB9B25A21A466AC00F15B66 /* Quiz.swift */,
+				EFB9B25C21A466CC00F15B66 /* Question.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,8 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF8FC4B4219742C100162DD3 /* LaunchScreen.storyboard in Resources */,
+				EF39E64721A328540028EFA1 /* FontAwesome.otf in Resources */,
 				EF8FC4B1219742C100162DD3 /* Assets.xcassets in Resources */,
-				EFF83725219B5E4300688FF0 /* FontAwesome.otf in Resources */,
 				EF8FC4AF219742C000162DD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,9 +201,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFB9B26621A485E000F15B66 /* Header.swift in Sources */,
+				EFB9B25B21A466AC00F15B66 /* Quiz.swift in Sources */,
+				EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */,
+				EFB9B26C21A4AFFC00F15B66 /* AnswerCell.swift in Sources */,
 				EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */,
+				EF39E64B21A335090028EFA1 /* Settings.swift in Sources */,
 				EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */,
 				EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */,
+				EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */,
+				EFB9B26121A46CB700F15B66 /* QuestionscreenController.swift in Sources */,
+				EFB9B25D21A466CC00F15B66 /* Question.swift in Sources */,
 				EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
