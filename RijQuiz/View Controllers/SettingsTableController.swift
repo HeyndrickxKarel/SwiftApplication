@@ -43,6 +43,20 @@ class SettingsTableController: UITableViewController, UITextFieldDelegate {
         
         loadData()
         
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)                
+        
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func loadData(){
@@ -69,7 +83,7 @@ class SettingsTableController: UITableViewController, UITextFieldDelegate {
         let personalSettings = Settings(secondsPerQuestion: secondsPerQuestion, amountOfQuestions: amountOfQuestions, showAnswer: showAnswer, redo: redo, saveQuiz: saveQuiz)
         
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let archiveUrl = documentsDirectory.appendingPathComponent("personal_settings").appendingPathExtension("plist")
+        let archiveUrl = documentsDirectory.appendingPathComponent("settings").appendingPathExtension("plist")
         
         let propertyListEncoder = PropertyListEncoder()
         let encodedSettings = try? propertyListEncoder.encode(personalSettings)

@@ -13,11 +13,16 @@ struct Question : Codable{
     var text : String
     var answers : [String]
     var rightAnswer : String
-    var userAswer : String?
+    var userAnswer : String?
+    
     
     init(text : String, answers : [String], rightAnswer : String){
         self.text = text
         self.answers = answers
         self.rightAnswer = rightAnswer
+    }
+    
+    func checkIfAnswerCorrect() -> Bool{
+        return (userAnswer! == rightAnswer)                   
     }
 }

@@ -9,15 +9,28 @@
 import UIKit
 
 class QuestionscreenController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var lblQuestion: Paragraph!
     @IBOutlet weak var lblHeader: Header!
     @IBOutlet weak var navigationTitle: UINavigationItem!
-    @IBOutlet weak var tableAnswers: UITableView!
+    
+    @IBOutlet weak var btnAnswer1: UIButton!
+    @IBOutlet weak var btnAnswer2: UIButton!
+    @IBOutlet weak var btnAnswer3: UIButton!
+    
+    @IBOutlet weak var btnNext: ShadowButton!
+    @IBOutlet weak var lblTimer: UILabel!
     
     var currentQuiz : Quiz?
     var answers: [String] = []
     var fakeQuestions : [Question] = []
+    var answerCorrect : Bool = false
+    var currentAnswer : String = ""
+    var lastTappedButton : UIButton!
+    
+    var seconds : Int = 0
+    var timer = Timer()
+    var isTimerRunning = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +38,87 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         fakeQuestions = initializeFakeQuestions()
         loadQuiz()
         
-       
         setGui()
         
-       
+        startTimer()
+        
     }
     
     @IBAction func btnNextTapped(_ sender: Any) {
         
+        gaNaarVolgendeVraag()
         
     }
     
+    func startTimer(){
+        seconds = currentQuiz!.currentSettings.secondsPerQuestion
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(QuestionscreenController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    func pauseTimer(){
+        timer.invalidate()
+    }
+    
+    @objc func updateTimer(){
+        if seconds == 0 {
+            gaNaarVolgendeVraag()
+        } else {
+            seconds -= 1
+            lblTimer.text = String(seconds)
+        }
+    }
+    func resetTimer(){
+        seconds = currentQuiz!.currentSettings.secondsPerQuestion
+    }
+    func gaNaarVolgendeVraag(){
+        
+        currentQuiz!.answerQuestion(answer: currentAnswer)
+        
+        // check if answer correct
+        if (currentQuiz!.isAnswerCorrect() == true){
+            currentQuiz!.nextQuestion()
+            setGui()
+        } else {
+            // check if redo and answer wrong()
+            if (currentQuiz!.currentSettings.redo == true  && currentQuiz!.isAnswerCorrect() != true){
+                
+                //check how many attempts in order to go to next question and or show the answer
+                if currentQuiz!.attempts == 1 {
+                    if (currentQuiz!.currentSettings.showAnswer == true){
+                        createAlert(title: "Jammer!", message: "Je vond het maar niet! Het juist antwoord was ...", showAnswer: true)
+                    }
+                    
+                } else if currentQuiz!.attempts == 2 {
+                    lastTappedButton.setTitleColor(UIColor.red, for: .normal)
+                    createAlert(title: "Oops", message: "Je antwoord was fout maar je hebt nog een herkansing!", showAnswer: false)
+                }
+      
+            }
+ 
+        }
+
+        currentAnswer = ""
+    }
+ 
+
+    
     func setGui(){
+        
+        navigationTitle.title = "Vraag " + String(currentQuiz!.currentQuestion + 1) + "/" + String(currentQuiz!.questions.count)
+
         lblHeader.text = "Vraag " + String(currentQuiz!.currentQuestion + 1)
         lblQuestion.text = currentQuiz!.questions[currentQuiz!.currentQuestion].text
+        lblTimer.text = String(currentQuiz!.currentSettings.secondsPerQuestion)
+
         answers = currentQuiz!.questions[currentQuiz!.currentQuestion].answers
+        
+        btnAnswer1.setTitle(answers[0], for:.normal)
+        btnAnswer2.setTitle(answers[1], for:.normal)
+        btnAnswer3.setTitle(answers[2], for:.normal)
+        
+        resetButtonColors()
+        
+        resetTimer()
+
     }
     
     func initializeFakeQuestions() -> [Question]{
@@ -65,8 +144,58 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
         let question2 = Question(text: "Mag de fiets de auto inhalen?", answers: tempAnswers2, rightAnswer: answer4)
         
-        let questions : [Question] = [question1, question2]
+        let answer7 = "Ja duuuh"
+        let answer8 = "Nee joh, tuurlijk niet."
+        let answer9 = "Als je dood wilt, wel ja"
+        
+        var tempAnswers3 : [String] = []
+        tempAnswers3.append(answer7)
+        tempAnswers3.append(answer8)
+        tempAnswers3.append(answer9)
+        
+        let question3 = Question(text: "Mag je hier over steken?", answers: tempAnswers3, rightAnswer: answer9)
+        
+        
+        let questions : [Question] = [question1, question2, question3, question1, question2, question3, question1, question2, question3, question1]
         return questions
+        
+    }
+    
+    func createAlert(title: String, message: String, showAnswer: Bool){
+        
+        pauseTimer()
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Oké", style: UIAlertAction.Style.default, handler: {(action) in
+            alert.dismiss(animated: true, completion: nil)
+            if showAnswer {
+                self.currentQuiz!.nextQuestion()
+                self.setGui()
+            } else {
+                self.currentQuiz!.nextAttempt()
+            }
+            self.startTimer()
+        }))
+        
+        self.present(alert, animated: true,completion: nil)
+    }
+   
+    
+    func resetButtonColors(){
+        btnAnswer1.setTitleColor(UIColor.darkGray, for: .normal)
+        btnAnswer2.setTitleColor(UIColor.darkGray, for: .normal)
+        btnAnswer3.setTitleColor(UIColor.darkGray, for: .normal)
+    }
+    @IBAction func btnAnswerTapped(_ sender: UIButton) {
+        
+        resetButtonColors()
+        
+        if let buttonTitle = sender.title(for: .normal) {
+            currentAnswer = buttonTitle
+            sender.setTitleColor(UIColor.blue, for: .normal)
+            lastTappedButton  = sender
+        }
         
     }
     func loadSettings() -> Settings{
@@ -101,38 +230,11 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         if !quizExists {
             let currentSettings : Settings = loadSettings()
             currentQuiz = Quiz(questions: fakeQuestions, currentSettings: currentSettings)
-
+            
         }
     }
-
-    func createAnswers() -> [String]{
-        let answer1 = "Ja de auto mag dat."
-        let answer2 = "Nee de auto mag dat niet"
-        let answer3 = "Ja, elke auto mag dat."
-        
-        var tempAnswers : [String] = []
-        tempAnswers.append(answer1)
-        tempAnswers.append(answer2)
-        tempAnswers.append(answer3)
-        
-        return tempAnswers
-    }
-
-}
-extension QuestionscreenController : UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return answers.count
-    }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let answer = answers[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell") as! AnswerCell
-            
-        cell.setAnswer(answer: answer)
-        
-        return cell
-    }
     
     
 }
+

@@ -13,13 +13,37 @@ struct Quiz : Codable{
     var questions : [Question]
     var currentQuestion : Int = 0
     var currentSettings : Settings
+    var attempts : Int = 1
+    
     
     init (questions: [Question], currentSettings : Settings){
         self.questions = questions
         self.currentSettings = currentSettings
+        if currentSettings.redo{
+            attempts = 2
+        }
     }
     
-    mutating func answerQuestion(answer: String){
-        questions[currentQuestion].userAswer = answer
+    mutating func nextAttempt(){
+        attempts -= 1
     }
+    
+    mutating func nextQuestion(){
+        currentQuestion += 1
+        attempts = 2
+    }
+    
+    mutating func isAnswerCorrect() -> Bool {
+        let answerCorrect = questions[currentQuestion].checkIfAnswerCorrect()
+        return answerCorrect
+    }
+    mutating func answerQuestion(answer: String){
+        questions[currentQuestion].userAnswer = answer
+    }
+    
+    
+   
+    
+    
+    
 }
