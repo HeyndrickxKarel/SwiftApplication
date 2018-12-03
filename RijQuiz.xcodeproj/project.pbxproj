@@ -10,6 +10,7 @@
 		EF1D355821B45495002C46FA /* BottomBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355721B45495002C46FA /* BottomBorderView.swift */; };
 		EF1D355A21B543DF002C46FA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355921B543DF002C46FA /* ResultsViewController.swift */; };
 		EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355B21B568BB002C46FA /* ResultCell.swift */; };
+		EF1D355F21B576B3002C46FA /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355E21B576B3002C46FA /* ColorExtension.swift */; };
 		EF39E64721A328540028EFA1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF39E64621A328540028EFA1 /* FontAwesome.otf */; };
 		EF39E64B21A335090028EFA1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E64A21A335090028EFA1 /* Settings.swift */; };
 		EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FC4A9219742C000162DD3 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		EF1D355721B45495002C46FA /* BottomBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderView.swift; sourceTree = "<group>"; };
 		EF1D355921B543DF002C46FA /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		EF1D355B21B568BB002C46FA /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		EF1D355E21B576B3002C46FA /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		EF39E64621A328540028EFA1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		EF39E64A21A335090028EFA1 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF8FC4A6219742C000162DD3 /* RijQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RijQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF1D355D21B5769E002C46FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF1D355E21B576B3002C46FA /* ColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		EF8FC49D219742C000162DD3 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		EF8FC4A8219742C000162DD3 /* RijQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				EF1D355D21B5769E002C46FA /* Extensions */,
 				EFB9B26221A473E400F15B66 /* Components */,
 				EFF8372A219C404700688FF0 /* Models */,
 				EFF83728219C402500688FF0 /* View Controllers */,
@@ -216,6 +227,7 @@
 				EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */,
 				EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */,
 				EF1D355821B45495002C46FA /* BottomBorderView.swift in Sources */,
+				EF1D355F21B576B3002C46FA /* ColorExtension.swift in Sources */,
 				EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */,
 				EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */,
 				EFB9B26121A46CB700F15B66 /* QuestionscreenController.swift in Sources */,
