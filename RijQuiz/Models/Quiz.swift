@@ -28,6 +28,11 @@ struct Quiz : Codable{
         attempts -= 1
     }
     
+    func isThereAnotherQuestion() -> Bool{
+        return ((currentQuestion + 1) != questions.count)
+        
+    }
+    
     mutating func nextQuestion(){
         currentQuestion += 1
         attempts = 2
@@ -39,6 +44,23 @@ struct Quiz : Codable{
     }
     mutating func answerQuestion(answer: String){
         questions[currentQuestion].userAnswer = answer
+    }
+    
+    mutating func calculateScore() -> (Int, Int){
+        let amountOfQuestionsAnswered = currentQuestion
+        var amountOfCorrectAnswers = 0
+        
+        for n in 0..<currentQuestion {
+            if questions[n].checkIfAnswerCorrect() {
+                amountOfCorrectAnswers += 1
+            }
+        }
+        
+        return (amountOfCorrectAnswers, amountOfQuestionsAnswered)
+    }
+    
+    mutating func getAmountAnsweredQuestions() -> Int{
+       return currentQuestion
     }
     
     

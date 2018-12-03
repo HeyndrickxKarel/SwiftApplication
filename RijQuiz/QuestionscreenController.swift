@@ -44,6 +44,10 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func btnStopEarlyTapped(_ sender: Any) {
+        pauseTimer()
+        performSegue(withIdentifier: "passQuizSegue", sender: self)
+    }
     @IBAction func btnNextTapped(_ sender: Any) {
         
         gaNaarVolgendeVraag()
@@ -57,7 +61,6 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     func pauseTimer(){
         timer.invalidate()
     }
-    
     @objc func updateTimer(){
         if seconds == 0 {
             gaNaarVolgendeVraag()
@@ -69,14 +72,22 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     func resetTimer(){
         seconds = currentQuiz!.currentSettings.secondsPerQuestion
     }
+    
     func gaNaarVolgendeVraag(){
         
         currentQuiz!.answerQuestion(answer: currentAnswer)
         
         // check if answer correct
         if (currentQuiz!.isAnswerCorrect() == true){
-            currentQuiz!.nextQuestion()
-            setGui()
+            
+            if currentQuiz!.isThereAnotherQuestion() {
+                currentQuiz!.nextQuestion()
+                setGui()
+            } else {
+                pauseTimer()
+                performSegue(withIdentifier: "passQuizSegue", sender: self)
+            }
+           
         } else {
             // check if redo and answer wrong()
             if (currentQuiz!.currentSettings.redo == true  && currentQuiz!.isAnswerCorrect() != true){
@@ -84,11 +95,15 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                 //check how many attempts in order to go to next question and or show the answer
                 if currentQuiz!.attempts == 1 {
                     if (currentQuiz!.currentSettings.showAnswer == true){
-                        createAlert(title: "Jammer!", message: "Je vond het maar niet! Het juist antwoord was ...", showAnswer: true)
+                        createAlert(title: "Jammer!", message: "Je vond het maar niet! Het juiste antwoord was: '" + currentQuiz!.questions[currentQuiz!.currentQuestion].rightAnswer + "'", showAnswer: true)
                     }
                     
                 } else if currentQuiz!.attempts == 2 {
-                    lastTappedButton.setTitleColor(UIColor.red, for: .normal)
+                    
+                    if currentAnswer != ""{
+                        lastTappedButton.setTitleColor(UIColor.red, for: .normal)
+                    }
+                    
                     createAlert(title: "Oops", message: "Je antwoord was fout maar je hebt nog een herkansing!", showAnswer: false)
                 }
       
@@ -99,7 +114,10 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         currentAnswer = ""
     }
  
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let resultsController = segue.destination as! ResultsViewController
+        resultsController.currentQuiz = currentQuiz
+    }
     
     func setGui(){
         
@@ -169,19 +187,25 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
         alert.addAction(UIAlertAction(title: "Oké", style: UIAlertAction.Style.default, handler: {(action) in
             alert.dismiss(animated: true, completion: nil)
+            
             if showAnswer {
-                self.currentQuiz!.nextQuestion()
-                self.setGui()
+                if self.currentQuiz!.isThereAnotherQuestion() {
+                    self.currentQuiz!.nextQuestion()
+                    self.setGui()
+                } else {
+                    self.pauseTimer()
+                    self.performSegue(withIdentifier: "passQuizSegue", sender: self)
+                }
             } else {
                 self.currentQuiz!.nextAttempt()
             }
             self.startTimer()
+            
         }))
         
         self.present(alert, animated: true,completion: nil)
     }
    
-    
     func resetButtonColors(){
         btnAnswer1.setTitleColor(UIColor.darkGray, for: .normal)
         btnAnswer2.setTitleColor(UIColor.darkGray, for: .normal)
@@ -198,6 +222,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    
     func loadSettings() -> Settings{
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveUrl = documentsDirectory.appendingPathComponent("settings").appendingPathExtension("plist")
@@ -214,7 +239,6 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
         return currentSettings
     }
-    
     func loadQuiz(){
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveUrl = documentsDirectory.appendingPathComponent("current_quiz").appendingPathExtension("plist")

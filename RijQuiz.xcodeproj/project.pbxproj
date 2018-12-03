@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EF1D355821B45495002C46FA /* BottomBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355721B45495002C46FA /* BottomBorderView.swift */; };
+		EF1D355A21B543DF002C46FA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355921B543DF002C46FA /* ResultsViewController.swift */; };
+		EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355B21B568BB002C46FA /* ResultCell.swift */; };
 		EF39E64721A328540028EFA1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF39E64621A328540028EFA1 /* FontAwesome.otf */; };
 		EF39E64B21A335090028EFA1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E64A21A335090028EFA1 /* Settings.swift */; };
 		EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FC4A9219742C000162DD3 /* AppDelegate.swift */; };
@@ -21,13 +23,14 @@
 		EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26321A4740C00F15B66 /* ShadowButton.swift */; };
 		EFB9B26621A485E000F15B66 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26521A485E000F15B66 /* Header.swift */; };
 		EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26721A487EB00F15B66 /* Paragraph.swift */; };
-		EFB9B26C21A4AFFC00F15B66 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */; };
 		EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372B219C407700688FF0 /* StartscreenController.swift */; };
 		EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EF1D355721B45495002C46FA /* BottomBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBorderView.swift; sourceTree = "<group>"; };
+		EF1D355921B543DF002C46FA /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		EF1D355B21B568BB002C46FA /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		EF39E64621A328540028EFA1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		EF39E64A21A335090028EFA1 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF8FC4A6219742C000162DD3 /* RijQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RijQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,7 +46,6 @@
 		EFB9B26321A4740C00F15B66 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		EFB9B26521A485E000F15B66 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		EFB9B26721A487EB00F15B66 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
-		EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		EFF8372B219C407700688FF0 /* StartscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenController.swift; sourceTree = "<group>"; };
 		EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,8 +100,8 @@
 				EFB9B26321A4740C00F15B66 /* ShadowButton.swift */,
 				EFB9B26521A485E000F15B66 /* Header.swift */,
 				EFB9B26721A487EB00F15B66 /* Paragraph.swift */,
-				EFB9B26B21A4AFFC00F15B66 /* AnswerCell.swift */,
 				EF1D355721B45495002C46FA /* BottomBorderView.swift */,
+				EF1D355B21B568BB002C46FA /* ResultCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -118,6 +120,7 @@
 				EFB9B26021A46CB700F15B66 /* QuestionscreenController.swift */,
 				EFF8372B219C407700688FF0 /* StartscreenController.swift */,
 				EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */,
+				EF1D355921B543DF002C46FA /* ResultsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -207,10 +210,11 @@
 				EFB9B26621A485E000F15B66 /* Header.swift in Sources */,
 				EFB9B25B21A466AC00F15B66 /* Quiz.swift in Sources */,
 				EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */,
-				EFB9B26C21A4AFFC00F15B66 /* AnswerCell.swift in Sources */,
+				EF1D355A21B543DF002C46FA /* ResultsViewController.swift in Sources */,
 				EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */,
 				EF39E64B21A335090028EFA1 /* Settings.swift in Sources */,
 				EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */,
+				EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */,
 				EF1D355821B45495002C46FA /* BottomBorderView.swift in Sources */,
 				EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */,
 				EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */,
