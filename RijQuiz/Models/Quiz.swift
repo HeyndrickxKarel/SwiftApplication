@@ -12,6 +12,7 @@ struct Quiz : Codable{
     
     var questions : [Question]
     var currentQuestion : Int = 0
+    var amountOfAnsweredQuestions: Int = 0
     var currentSettings : Settings
     var attempts : Int = 1
     var timeLeftThisTurn : Int! = 15
@@ -37,6 +38,7 @@ struct Quiz : Codable{
     
     mutating func nextQuestion(){
         currentQuestion += 1
+        amountOfAnsweredQuestions += 1
         attempts = 2
     }
     
@@ -49,10 +51,10 @@ struct Quiz : Codable{
     }
     
     mutating func calculateScore() -> (Int, Int){
-        let amountOfQuestionsAnswered = currentQuestion
+        let amountOfQuestionsAnswered = getAmountAnsweredQuestions()
         var amountOfCorrectAnswers = 0
         
-        for n in 0..<currentQuestion {
+        for n in 0..<amountOfAnsweredQuestions {
             if questions[n].checkIfAnswerCorrect() {
                 amountOfCorrectAnswers += 1
             }
@@ -62,7 +64,11 @@ struct Quiz : Codable{
     }
     
     mutating func getAmountAnsweredQuestions() -> Int{
-       return currentQuestion
+        
+        return amountOfAnsweredQuestions
+    }
+    mutating func lastQuestionWasAnswered(){
+        amountOfAnsweredQuestions = questions.count
     }
     
     mutating func timerTik(){

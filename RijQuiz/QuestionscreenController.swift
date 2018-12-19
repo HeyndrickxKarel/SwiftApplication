@@ -86,6 +86,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                 setGui()
             } else {
                 pauseTimer()
+                currentQuiz!.lastQuestionWasAnswered()
                 performSegue(withIdentifier: "passQuizSegue", sender: self)
             }
            
@@ -128,6 +129,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                 currentQuiz!.nextQuestion()
                 setGui()
             } else {
+                currentQuiz!.lastQuestionWasAnswered()
                 performSegue(withIdentifier: "passQuizSegue", sender: self)
             }
         } else {
@@ -135,6 +137,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                 currentQuiz!.nextQuestion()
                 setGui()
             } else {
+                currentQuiz!.lastQuestionWasAnswered()
                 performSegue(withIdentifier: "passQuizSegue", sender: self)
             }
         }
@@ -152,7 +155,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
             popupController.question = currentQuiz!.questions[currentQuiz!.currentQuestion].text
             popupController.answers = "Jouw antwoord: \n " + currentQuiz!.questions[currentQuiz!.currentQuestion].userAnswer! + "\nJuist antwoord: \n " + currentQuiz!.questions[currentQuiz!.currentQuestion].rightAnswer
         }
-               
+        
     }
     
 

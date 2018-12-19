@@ -43,6 +43,7 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
         return cell
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
         if(segue.identifier == "showCorrectAnswerSegue"){
