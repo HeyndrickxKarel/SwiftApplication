@@ -13,7 +13,13 @@ import Foundation
  The version in this QuestionList tells the app whether the questionslist has to be updated or not.
  */
 
-struct QuestionList{
+struct QuestionList : Codable {
     var version : String
     var questions: [Question]
+    
+    init(version: String, questions: [Question]){
+        self.version = version
+        self.questions = questions
+    }
+
 }
