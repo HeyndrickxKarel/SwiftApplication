@@ -46,9 +46,6 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="ivR-gu-u4E" kind="show" id="Szg-UP-z9w"/>
                                         </connections>
@@ -71,9 +68,6 @@
                                                 </fragment>
                                             </attributedString>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <segue destination="SHT-bU-l8N" kind="show" id="gOv-hS-IQk"/>
                                         </connections>
@@ -93,9 +87,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="RijQuiz" id="Zbg-Dk-Hqr"/>
-                    <connections>
-                        <outlet property="imgCar" destination="Sub-Cv-Epi" id="3cu-XK-VQr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,11 +353,133 @@
                         <outlet property="lblTimer" destination="bLc-B6-7Wb" id="rrh-a9-BuH"/>
                         <outlet property="navigationTitle" destination="plZ-dO-DUL" id="0XN-r7-U2F"/>
                         <segue destination="kAN-xy-3JG" kind="show" identifier="passQuizSegue" id="dMi-RQ-AR6"/>
+                        <segue destination="Svz-0a-gPB" kind="presentation" identifier="showCorrectAnswerSegue" id="j4Z-dz-lfi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zAP-Uh-pJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2916" y="40"/>
+            <point key="canvasLocation" x="2292" y="61"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="QER-jJ-gOY">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="Svz-0a-gPB" customClass="PopUpViewController" customModule="RijQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Blz-ox-Yar">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sdw-tB-Gvf">
+                                <rect key="frame" x="57.5" y="183.5" width="260" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="VQR-cy-aCT">
+                                        <rect key="frame" x="0.0" y="0.0" width="260" height="248"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fIa-eD-KD0" customClass="BottomBorderView" customModule="RijQuiz" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="260" height="82.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqq-d7-yHR">
+                                                        <rect key="frame" x="15" y="0.0" width="245" height="82.5"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="18"/>
+                                                        <color key="textColor" red="0.062299489110000002" green="0.5307741117" blue="0.2110679329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="tqq-d7-yHR" firstAttribute="leading" secondItem="fIa-eD-KD0" secondAttribute="leading" constant="15" id="BkA-F3-5Oo"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tqq-d7-yHR" secondAttribute="trailing" id="RPl-Ro-aVM"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tqq-d7-yHR" secondAttribute="bottom" id="mPw-JB-SGj"/>
+                                                    <constraint firstItem="tqq-d7-yHR" firstAttribute="top" secondItem="fIa-eD-KD0" secondAttribute="top" id="sdn-1u-2h5"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bP0-ob-tAy">
+                                                <rect key="frame" x="0.0" y="82.5" width="260" height="83"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YpS-Uz-jaV">
+                                                        <rect key="frame" x="15" y="0.0" width="245" height="83"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="YpS-Uz-jaV" secondAttribute="bottom" id="aS3-is-3Nh"/>
+                                                    <constraint firstItem="YpS-Uz-jaV" firstAttribute="top" secondItem="bP0-ob-tAy" secondAttribute="top" id="jXe-UT-mjS"/>
+                                                    <constraint firstItem="YpS-Uz-jaV" firstAttribute="leading" secondItem="bP0-ob-tAy" secondAttribute="leading" constant="15" id="nvH-MO-BYl"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YpS-Uz-jaV" secondAttribute="trailing" id="p6C-er-6qX"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRT-ol-fWh">
+                                                <rect key="frame" x="0.0" y="165.5" width="260" height="82.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answers" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRA-AF-wx7">
+                                                        <rect key="frame" x="15" y="0.0" width="245" height="82.5"/>
+                                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="HRA-AF-wx7" secondAttribute="bottom" id="a57-VL-CwR"/>
+                                                    <constraint firstItem="HRA-AF-wx7" firstAttribute="leading" secondItem="lRT-ol-fWh" secondAttribute="leading" constant="15" id="kyB-bq-YGZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HRA-AF-wx7" secondAttribute="trailing" id="rGa-E6-BBW"/>
+                                                    <constraint firstItem="HRA-AF-wx7" firstAttribute="top" secondItem="lRT-ol-fWh" secondAttribute="top" id="tmp-Oo-D7O"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fIa-eD-KD0" secondAttribute="trailing" id="GA9-Xc-Yj0"/>
+                                            <constraint firstItem="fIa-eD-KD0" firstAttribute="leading" secondItem="VQR-cy-aCT" secondAttribute="leading" id="zJb-zW-cwj"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="so9-1v-m3N" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="248" width="260" height="52"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="Ein-Ie-nM0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="17"/>
+                                        <state key="normal" title="Oké">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnOkeTapped:" destination="Svz-0a-gPB" eventType="touchUpInside" id="rdN-m1-O1h"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VQR-cy-aCT" secondAttribute="trailing" id="1RK-ff-oMJ"/>
+                                    <constraint firstItem="VQR-cy-aCT" firstAttribute="leading" secondItem="sdw-tB-Gvf" secondAttribute="leading" id="FSW-GT-hje"/>
+                                    <constraint firstAttribute="width" constant="260" id="JnN-bl-Q6H"/>
+                                    <constraint firstItem="VQR-cy-aCT" firstAttribute="top" secondItem="sdw-tB-Gvf" secondAttribute="top" id="JpE-2A-C0r"/>
+                                    <constraint firstItem="so9-1v-m3N" firstAttribute="leading" secondItem="sdw-tB-Gvf" secondAttribute="leading" id="VGp-ws-zHY"/>
+                                    <constraint firstAttribute="trailing" secondItem="so9-1v-m3N" secondAttribute="trailing" id="eoU-nn-ctU"/>
+                                    <constraint firstAttribute="bottom" secondItem="so9-1v-m3N" secondAttribute="bottom" id="hee-DS-PUg"/>
+                                    <constraint firstItem="so9-1v-m3N" firstAttribute="top" secondItem="VQR-cy-aCT" secondAttribute="bottom" id="x8a-RD-01n"/>
+                                    <constraint firstAttribute="height" constant="300" id="yKy-5r-zRd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.34402760152284262" green="0.34402760152284262" blue="0.34402760152284262" alpha="0.30993150684931509" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="sdw-tB-Gvf" firstAttribute="centerY" secondItem="Blz-ox-Yar" secondAttribute="centerY" id="XyI-DE-UHb"/>
+                            <constraint firstItem="sdw-tB-Gvf" firstAttribute="centerX" secondItem="Blz-ox-Yar" secondAttribute="centerX" id="YUn-ai-bqL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PwU-Wv-B7W"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblAnswers" destination="HRA-AF-wx7" id="CF5-pv-qfv"/>
+                        <outlet property="lblQuestion" destination="YpS-Uz-jaV" id="Pg1-xY-zri"/>
+                        <outlet property="lblTitle" destination="tqq-d7-yHR" id="tfV-gg-2jC"/>
+                        <outlet property="viewContent" destination="sdw-tB-Gvf" id="kLK-gD-2sc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q8f-d9-8n0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2292" y="876.61169415292363"/>
         </scene>
         <!--Resultaten-->
         <scene sceneID="BJY-NB-sfx">
@@ -540,11 +653,12 @@
                         <outlet property="btnBack" destination="FvY-bf-taT" id="aTY-3u-cLp"/>
                         <outlet property="lblScore" destination="Fpm-34-zHB" id="j9C-oj-9Vg"/>
                         <outlet property="lblSucceeded" destination="Pux-rC-7HP" id="8bF-Wj-2he"/>
+                        <segue destination="Svz-0a-gPB" kind="presentation" identifier="showCorrectAnswerSegue" id="7Fn-Ss-vT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQd-nd-Ufm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2120.8000000000002" y="506.89655172413796"/>
+            <point key="canvasLocation" x="1294" y="788"/>
         </scene>
         <!--Instellingen-->
         <scene sceneID="tmy-lc-TOD">
@@ -784,7 +898,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RaI-Ae-7sb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2189.5999999999999" y="-573.46326836581716"/>
+            <point key="canvasLocation" x="2292" y="-665"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lFB-Qb-r4q">
@@ -809,4 +923,7 @@
         <image name="car" width="497" height="490"/>
         <image name="chrono" width="13.313109397888184" height="13.313109397888184"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="j4Z-dz-lfi"/>
+    </inferredMetricsTieBreakers>
 </document>

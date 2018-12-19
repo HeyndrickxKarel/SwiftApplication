@@ -11,6 +11,7 @@
 		EF1D355A21B543DF002C46FA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355921B543DF002C46FA /* ResultsViewController.swift */; };
 		EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355B21B568BB002C46FA /* ResultCell.swift */; };
 		EF1D355F21B576B3002C46FA /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D355E21B576B3002C46FA /* ColorExtension.swift */; };
+		EF1D356121B580C1002C46FA /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D356021B580C1002C46FA /* PopUpViewController.swift */; };
 		EF39E64721A328540028EFA1 /* FontAwesome.otf in Resources */ = {isa = PBXBuildFile; fileRef = EF39E64621A328540028EFA1 /* FontAwesome.otf */; };
 		EF39E64B21A335090028EFA1 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF39E64A21A335090028EFA1 /* Settings.swift */; };
 		EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8FC4A9219742C000162DD3 /* AppDelegate.swift */; };
@@ -24,6 +25,7 @@
 		EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26321A4740C00F15B66 /* ShadowButton.swift */; };
 		EFB9B26621A485E000F15B66 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26521A485E000F15B66 /* Header.swift */; };
 		EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26721A487EB00F15B66 /* Paragraph.swift */; };
+		EFF7891E21CA3DE800CEB484 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7891D21CA3DE800CEB484 /* QuestionList.swift */; };
 		EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372B219C407700688FF0 /* StartscreenController.swift */; };
 		EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */; };
 /* End PBXBuildFile section */
@@ -33,6 +35,7 @@
 		EF1D355921B543DF002C46FA /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		EF1D355B21B568BB002C46FA /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		EF1D355E21B576B3002C46FA /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		EF1D356021B580C1002C46FA /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		EF39E64621A328540028EFA1 /* FontAwesome.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.otf; sourceTree = "<group>"; };
 		EF39E64A21A335090028EFA1 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF8FC4A6219742C000162DD3 /* RijQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RijQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +51,7 @@
 		EFB9B26321A4740C00F15B66 /* ShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowButton.swift; sourceTree = "<group>"; };
 		EFB9B26521A485E000F15B66 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		EFB9B26721A487EB00F15B66 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
+		EFF7891D21CA3DE800CEB484 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
 		EFF8372B219C407700688FF0 /* StartscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenController.swift; sourceTree = "<group>"; };
 		EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +136,7 @@
 				EFF8372B219C407700688FF0 /* StartscreenController.swift */,
 				EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */,
 				EF1D355921B543DF002C46FA /* ResultsViewController.swift */,
+				EF1D356021B580C1002C46FA /* PopUpViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -142,6 +147,7 @@
 				EF39E64A21A335090028EFA1 /* Settings.swift */,
 				EFB9B25A21A466AC00F15B66 /* Quiz.swift */,
 				EFB9B25C21A466CC00F15B66 /* Question.swift */,
+				EFF7891D21CA3DE800CEB484 /* QuestionList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,11 +231,13 @@
 				EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */,
 				EF39E64B21A335090028EFA1 /* Settings.swift in Sources */,
 				EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */,
+				EF1D356121B580C1002C46FA /* PopUpViewController.swift in Sources */,
 				EF1D355C21B568BB002C46FA /* ResultCell.swift in Sources */,
 				EF1D355821B45495002C46FA /* BottomBorderView.swift in Sources */,
 				EF1D355F21B576B3002C46FA /* ColorExtension.swift in Sources */,
 				EF8FC4AC219742C000162DD3 /* ViewController.swift in Sources */,
 				EFB9B26421A4740C00F15B66 /* ShadowButton.swift in Sources */,
+				EFF7891E21CA3DE800CEB484 /* QuestionList.swift in Sources */,
 				EFB9B26121A46CB700F15B66 /* QuestionscreenController.swift in Sources */,
 				EFB9B25D21A466CC00F15B66 /* Question.swift in Sources */,
 				EF8FC4AA219742C000162DD3 /* AppDelegate.swift in Sources */,

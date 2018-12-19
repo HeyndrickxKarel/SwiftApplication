@@ -95,7 +95,8 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                 //check how many attempts in order to go to next question and or show the answer
                 if currentQuiz!.attempts == 1 {
                     if (currentQuiz!.currentSettings.showAnswer == true){
-                        createAlert(title: "Jammer!", message: "Je vond het maar niet! Het juiste antwoord was: '" + currentQuiz!.questions[currentQuiz!.currentQuestion].rightAnswer + "'", showAnswer: true)
+                        //createAlert(title: "Jammer!", message: "Je vond het maar niet! Het juiste antwoord was: '" + currentQuiz!.questions[currentQuiz!.currentQuestion].rightAnswer + "'", showAnswer: true)
+                        performSegue(withIdentifier: "showCorrectAnswerSegue", sender: self)
                     }
                     
                 } else if currentQuiz!.attempts == 2 {
@@ -115,9 +116,20 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     }
  
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let resultsController = segue.destination as! ResultsViewController
-        resultsController.currentQuiz = currentQuiz
+        if(segue.identifier == "passQuizSegue"){
+            let resultsController = segue.destination as! ResultsViewController
+            resultsController.currentQuiz = currentQuiz
+        }
+        if(segue.identifier == "showCorrectAnswerSegue"){
+            let popupController = segue.destination as! PopUpViewController
+            popupController.titel = "Oei, dat was fout!"
+            popupController.question = currentQuiz!.questions[currentQuiz!.currentQuestion].text
+            popupController.answers = "Jouw antwoord: \n " + currentQuiz!.questions[currentQuiz!.currentQuestion].userAnswer! + "\nJuist antwoord: \n " + currentQuiz!.questions[currentQuiz!.currentQuestion].rightAnswer
+        }
+        
+       
     }
+    
     
     func setGui(){
         
