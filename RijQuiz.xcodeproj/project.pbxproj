@@ -26,6 +26,7 @@
 		EFB9B26621A485E000F15B66 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26521A485E000F15B66 /* Header.swift */; };
 		EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB9B26721A487EB00F15B66 /* Paragraph.swift */; };
 		EFF7891E21CA3DE800CEB484 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7891D21CA3DE800CEB484 /* QuestionList.swift */; };
+		EFF7892021CA95E300CEB484 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF7891F21CA95E300CEB484 /* ArrayExtension.swift */; };
 		EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372B219C407700688FF0 /* StartscreenController.swift */; };
 		EFF8372E219C40ED00688FF0 /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		EFB9B26521A485E000F15B66 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		EFB9B26721A487EB00F15B66 /* Paragraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paragraph.swift; sourceTree = "<group>"; };
 		EFF7891D21CA3DE800CEB484 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
+		EFF7891F21CA95E300CEB484 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		EFF8372B219C407700688FF0 /* StartscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartscreenController.swift; sourceTree = "<group>"; };
 		EFF8372D219C40ED00688FF0 /* SettingsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				EF1D355E21B576B3002C46FA /* ColorExtension.swift */,
+				EFF7891F21CA95E300CEB484 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				EFB9B26621A485E000F15B66 /* Header.swift in Sources */,
 				EFB9B25B21A466AC00F15B66 /* Quiz.swift in Sources */,
 				EFB9B26821A487EB00F15B66 /* Paragraph.swift in Sources */,
+				EFF7892021CA95E300CEB484 /* ArrayExtension.swift in Sources */,
 				EF1D355A21B543DF002C46FA /* ResultsViewController.swift in Sources */,
 				EFF8372C219C407700688FF0 /* StartscreenController.swift in Sources */,
 				EF39E64B21A335090028EFA1 /* Settings.swift in Sources */,

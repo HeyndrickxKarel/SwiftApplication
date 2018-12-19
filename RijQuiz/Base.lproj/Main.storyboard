@@ -28,6 +28,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0xr-ND-Mgu">
                                 <rect key="frame" x="30" y="513" width="315" height="124"/>
                                 <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="De vragenlijst is onderweg naar hier." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aE0-V8-vn9" customClass="Paragraph" customModule="RijQuiz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgl-Px-ahh" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="52"/>
                                         <color key="backgroundColor" red="0.072693927140000003" green="0.65595256980000005" blue="0.25396710169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,7 +75,8 @@
                                             </attributedString>
                                         </state>
                                         <connections>
-                                            <segue destination="SHT-bU-l8N" kind="show" id="gOv-hS-IQk"/>
+                                            <action selector="btnStartTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODs-Qg-Ryz"/>
+                                            <action selector="btnStartTapped:" destination="Dvo-Px-KKn" eventType="touchUpInside" id="n1w-f9-vxt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -87,8 +94,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="RijQuiz" id="Zbg-Dk-Hqr"/>
+                    <connections>
+                        <outlet property="lblStatus" destination="aE0-V8-vn9" id="hPr-Fh-oOC"/>
+                        <segue destination="SHT-bU-l8N" kind="show" identifier="startQuizSegue" id="AYB-IX-Ufl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Dvo-Px-KKn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1375.2" y="-229.83508245877064"/>
         </scene>
@@ -924,6 +936,6 @@
         <image name="chrono" width="13.313109397888184" height="13.313109397888184"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j4Z-dz-lfi"/>
+        <segue reference="7Fn-Ss-vT9"/>
     </inferredMetricsTieBreakers>
 </document>

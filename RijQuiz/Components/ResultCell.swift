@@ -13,9 +13,10 @@ class ResultCell: UICollectionViewCell {
     @IBOutlet weak var btnQuestion: UIButton!
     
     var question : Question!
+    var resultsViewController : ResultsViewController!
     
     @IBAction func btnQuestionTapped(_ sender: Any) {
-        
+        resultsViewController.showRightAnswer(question: question)
     }
     
     func setQuestion(questionNr : Int, question : Question){

@@ -10,6 +10,7 @@ import UIKit
 
 class StartscreenController: UIViewController {
     
+    @IBOutlet weak var lblStatus: Paragraph!
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let propertyListDecoder = PropertyListDecoder()
     let propertyListEncoder = PropertyListEncoder()
@@ -18,13 +19,16 @@ class StartscreenController: UIViewController {
     let questionsURL = "https://rijquiz-backend.herokuapp.com/api/questions"
     var currentQuestionList: QuestionList?
     
-    
+    var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadQuestionList()
         
+        //Display indiciator in case loading the questions from the web takes a while
+        startLoadingIndicator()
+
         //If questionList doesn't yet exist
         if self.currentQuestionList == nil {
             loadAndSaveQuestions(version: "1.0.0")
@@ -33,8 +37,12 @@ class StartscreenController: UIViewController {
             loadQuestionListVersion()
            
         }
+        //Remove the indicator
+        stopLoadingIndicator()
+
 
     }
+
     
     func loadQuestionListVersion() {
         
@@ -106,6 +114,36 @@ class StartscreenController: UIViewController {
             }.resume()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "startQuizSegue"){
+            let questionscreenController = segue.destination as! QuestionscreenController
+            questionscreenController.questionList = self.currentQuestionList
+        }
+                
+        
+    }
+    
+    @IBAction func btnStartTapped(_ sender: Any) {
+         performSegue(withIdentifier: "startQuizSegue", sender: self)
+    }
+    func startLoadingIndicator(){
+        
+        lblStatus.isHidden = false
+        
+        loadingIndicator.center = self.view.center
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        view.addSubview(loadingIndicator)
+        
+        loadingIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    func stopLoadingIndicator(){
+        lblStatus.isHidden = true
+
+        loadingIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
     
 }
 

@@ -14,6 +14,7 @@ struct Quiz : Codable{
     var currentQuestion : Int = 0
     var currentSettings : Settings
     var attempts : Int = 1
+    var timeLeftThisTurn : Int! = 15
     
     
     init (questions: [Question], currentSettings : Settings){
@@ -22,6 +23,7 @@ struct Quiz : Codable{
         if currentSettings.redo{
             attempts = 2
         }
+        self.timeLeftThisTurn = currentSettings.secondsPerQuestion
     }
     
     mutating func nextAttempt(){
@@ -63,6 +65,15 @@ struct Quiz : Codable{
        return currentQuestion
     }
     
+    mutating func timerTik(){
+        timeLeftThisTurn -= 1
+    }
+    mutating func noTimeLeft() -> Bool {
+        return timeLeftThisTurn == 0
+    }
+    mutating func resetTimer(){
+        timeLeftThisTurn = currentSettings.secondsPerQuestion
+    }
     
    
     

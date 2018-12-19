@@ -20,6 +20,8 @@ class PopUpViewController: UIViewController {
     var question : String!
     var answers: String!
     
+    var questionscreenController : QuestionscreenController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,6 +38,13 @@ class PopUpViewController: UIViewController {
     
 
     @IBAction func btnOkeTapped(_ sender: Any) {
+        
+        // If popup was pulled during answering questions phase
+        if questionscreenController != nil {
+            questionscreenController.resetTimer()
+            questionscreenController.startTimer()
+        }
+       
         dismiss(animated: true, completion: nil)
     }
     
