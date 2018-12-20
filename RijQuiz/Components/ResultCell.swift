@@ -23,9 +23,9 @@ class ResultCell: UICollectionViewCell {
         self.question = question
         btnQuestion.setTitle(String(questionNr), for: .normal)
         if question.checkIfAnswerCorrect(){
-        btnQuestion.setTitleColor(UIColor(rgbValue: 0x0f8736), for: .normal)
+            btnQuestion.setTitleColor(UIColor(rgbValue: 0x0f8736), for: .normal)
         } else {
-        btnQuestion.setTitleColor(UIColor.red, for: .normal)
+            btnQuestion.setTitleColor(UIColor.red, for: .normal)
         }
     }
 }

@@ -25,6 +25,28 @@ class PopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setGui()
+       
+    }
+    
+/* -----------------------------  INTERACTION FUNCTIONS  -------------------------------- */
+    
+    @IBAction func btnOkeTapped(_ sender: Any) {
+        
+        // If popup was pulled during answering questions phase
+        if questionscreenController != nil {
+            questionscreenController.resetTimer()
+            questionscreenController.startTimer()
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+/* ------------------------------------------------------------------------------- */
+   
+    
+/* -----------------------------  GUI FUNCTIONS  -------------------------------- */
+    
+    func setGui(){
         viewContent.layer.cornerRadius = 6
         viewContent.layer.masksToBounds = true
         viewContent.layer.shadowRadius = 2
@@ -36,17 +58,5 @@ class PopUpViewController: UIViewController {
         lblAnswers.text = answers
     }
     
-
-    @IBAction func btnOkeTapped(_ sender: Any) {
-        
-        // If popup was pulled during answering questions phase
-        if questionscreenController != nil {
-            questionscreenController.resetTimer()
-            questionscreenController.startTimer()
-        }
-       
-        dismiss(animated: true, completion: nil)
-    }
-    
-
+/* ------------------------------------------------------------------------------- */
 }

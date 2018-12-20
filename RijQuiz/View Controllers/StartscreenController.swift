@@ -26,55 +26,71 @@ class StartscreenController: UIViewController {
         
         loadQuestionList()
         
+        /*
         //Display indiciator in case loading the questions from the web takes a while
         startLoadingIndicator()
-
-        //If questionList doesn't yet exist
-        if self.currentQuestionList == nil {
-            loadAndSaveQuestions(version: "1.0.0")
-        } else {
-            //Load version of list
-            loadQuestionListVersion()
-           
-        }
-        //Remove the indicator
+        */
+        
+        checkQuestionlistVersionAndUpdate()
+        
+        /*
+        //Remove the loading indicator
         stopLoadingIndicator()
-
+        */
 
     }
-
     
-    func loadQuestionListVersion() {
-        
-        let url = URL(string: settingsURL)
-        URLSession.shared.dataTask(with: url!){(data, reponse,err) in
-
-            guard let data = data else {return}
-            
-            do {
-                let jsonData : [String: Any]
-                jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String : Any]
-                print (jsonData)
-                
-                let version = jsonData["version"] as? String ?? ""
-                
-                //If version was found but is different from the currently saved questionlist
-                if self.currentQuestionList?.version != version {
-                    print("list got updated")
-                    self.loadAndSaveQuestions(version: version)
-                }
-                if self.currentQuestionList?.version == version {
-                    print("version is still the same")
-                }
-                
-            } catch let jsonError {
-                print (jsonError)
-            }
-            
-        }.resume()
-        
-       
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+
+    /* -----------------------------  INTERACTION FUNCTIONS  -------------------------------- */
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "startQuizSegue"){
+            let questionscreenController = segue.destination as! QuestionscreenController
+            questionscreenController.questionList = self.currentQuestionList
+        }
+        
+    }
+    
+    @IBAction func btnStartTapped(_ sender: Any) {
+        performSegue(withIdentifier: "startQuizSegue", sender: self)
+    }
+    
+    @IBAction func unwindToStartscreen(_ sender: UIStoryboardSegue){}
+    
+    
+    /* ------------------------------------------------------------------------------- */
+    
+    
+    /* -----------------------------  GUI FUNCTIONS  -------------------------------- */
+    
+    func startLoadingIndicator(){
+        
+        loadingIndicator.center = self.view.center
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        view.addSubview(loadingIndicator)
+        
+        loadingIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+    }
+    func stopLoadingIndicator(){
+        loadingIndicator.stopAnimating()
+        UIApplication.shared.endIgnoringInteractionEvents()
+    }
+    
+    /* ------------------------------------------------------------------------------- */
+    
+    /* -----------------------------  LOADING FUNCTIONS  -------------------------------- */
     
     
     func loadQuestionList(){
@@ -89,6 +105,35 @@ class StartscreenController: UIViewController {
         
     }
     
+    
+    func checkQuestionlistVersionAndUpdate(){
+        
+        let url = URL(string: settingsURL)
+        URLSession.shared.dataTask(with: url!){(data, reponse,err) in
+            
+            guard let data = data else {return}
+            
+            do {
+                let jsonData : [String: Any]
+                jsonData = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! [String : Any]
+                
+                let version = jsonData["version"] as? String ?? ""
+                
+                //If version was found but is different from the currently saved questionlist
+                if self.currentQuestionList == nil || self.currentQuestionList?.version != version {
+                    self.loadAndSaveQuestions(version: version)
+                }
+                
+                
+            } catch let jsonError {
+                print (jsonError)
+            }
+            
+            }.resume()
+    }
+    
+    
+    
     func loadAndSaveQuestions(version : String){
         let url = URL(string: questionsURL)
         URLSession.shared.dataTask(with: url!){(data, reponse,err) in
@@ -96,7 +141,7 @@ class StartscreenController: UIViewController {
             guard let data = data else {return}
             
             do {
-
+                
                 let questions = try JSONDecoder().decode([Question].self, from: data)
                 print(questions)
                 
@@ -111,39 +156,21 @@ class StartscreenController: UIViewController {
                 print (jsonError)
             }
             
+            
+            
             }.resume()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "startQuizSegue"){
-            let questionscreenController = segue.destination as! QuestionscreenController
-            questionscreenController.questionList = self.currentQuestionList
-        }
-                
-        
-    }
-    
-    @IBAction func btnStartTapped(_ sender: Any) {
-         performSegue(withIdentifier: "startQuizSegue", sender: self)
-    }
-    func startLoadingIndicator(){
-        
-        lblStatus.isHidden = false
-        
-        loadingIndicator.center = self.view.center
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        view.addSubview(loadingIndicator)
-        
-        loadingIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-    }
-    func stopLoadingIndicator(){
-        lblStatus.isHidden = true
+    /* ------------------------------------------------------------------------------- */
 
-        loadingIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
-    }
+    
+   
+    
+   
+    
+
+    
+
     
 }
 

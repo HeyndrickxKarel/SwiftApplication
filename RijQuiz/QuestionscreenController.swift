@@ -37,6 +37,8 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
         loadQuiz()
         
+        wordWrappifyButtons()
+
         setGui()
         
         startTimer()
@@ -44,39 +46,20 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     }
 
     
+    /* -----------------------------  INTERACTION FUNCTIONS  -------------------------------- */
+
+   
     @IBAction func btnStopEarlyTapped(_ sender: Any) {
         pauseTimer()
         performSegue(withIdentifier: "passQuizSegue", sender: self)
     }
     @IBAction func btnNextTapped(_ sender: Any) {
-        
         goToNextQuestion()
-        
     }
-    
-    func startTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(QuestionscreenController.updateTimer)), userInfo: nil, repeats: true)
-    }
-    func pauseTimer(){
-        timer.invalidate()
-    }
-    @objc func updateTimer(){
-        if currentQuiz!.noTimeLeft() {
-            goToNextQuestion()
-        } else {
-            currentQuiz!.timerTik()
-            lblTimer.text = String(currentQuiz!.timeLeftThisTurn)
-        }
-    }
-    func resetTimer(){
-        currentQuiz!.resetTimer()
-        lblTimer.text = String(currentQuiz!.timeLeftThisTurn)
 
-    }
-    
     func goToNextQuestion(){
         
-        currentQuiz!.answerQuestion(answer: currentAnswer)
+        currentQuiz!.answerQuestion(with: currentAnswer)
         
         // check if answer correct
         if (currentQuiz!.isAnswerCorrect() == true){
@@ -158,27 +141,17 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
     }
     
-
     
-    func setGui(){
-        
-        navigationTitle.title = "Vraag " + String(currentQuiz!.currentQuestion + 1) + "/" + String(currentQuiz!.questions.count)
-
-        lblHeader.text = "Vraag " + String(currentQuiz!.currentQuestion + 1)
-        lblQuestion.text = currentQuiz!.questions[currentQuiz!.currentQuestion].text
-
-        resetTimer()
-        
-        let answers = currentQuiz!.questions[currentQuiz!.currentQuestion].answers
-        
-        btnAnswer1.setTitle(answers[0], for:.normal)
-        btnAnswer2.setTitle(answers[1], for:.normal)
-        btnAnswer3.setTitle(answers[2], for:.normal)
+    @IBAction func btnAnswerTapped(_ sender: UIButton) {
         
         resetButtonColors()
         
-        resetTimer()
-
+        if let buttonTitle = sender.title(for: .normal) {
+            currentAnswer = buttonTitle
+            sender.setTitleColor(UIColor.blue, for: .normal)
+            lastTappedButton  = sender
+        }
+        
     }
     
     func createAlert(title: String, message: String){
@@ -196,30 +169,79 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
         self.present(alert, animated: true,completion: nil)
     }
-   
+    
+    /* ------------------------------------------------------------------------------- */
+
+    
+    
+    /* -----------------------------  GUI FUNCTIONS  -------------------------------- */
+
+    func setGui(){
+        
+        navigationTitle.title = "Vraag " + String(currentQuiz!.currentQuestion + 1) + "/" + String(currentQuiz!.questions.count)
+        
+        lblHeader.text = "Vraag " + String(currentQuiz!.currentQuestion + 1)
+        lblQuestion.text = currentQuiz!.questions[currentQuiz!.currentQuestion].text
+        
+        resetTimer()
+        
+        let answers = (currentQuiz!.questions[currentQuiz!.currentQuestion].answers).shuffle()
+        
+        btnAnswer1.setTitle(answers[0], for:.normal)
+        btnAnswer2.setTitle(answers[1], for:.normal)
+        btnAnswer3.setTitle(answers[2], for:.normal)
+        
+        resetButtonColors()
+        
+    }
+    
     func resetButtonColors(){
         btnAnswer1.setTitleColor(UIColor.darkGray, for: .normal)
         btnAnswer2.setTitleColor(UIColor.darkGray, for: .normal)
         btnAnswer3.setTitleColor(UIColor.darkGray, for: .normal)
     }
-    @IBAction func btnAnswerTapped(_ sender: UIButton) {
-        
-        resetButtonColors()
-        
-        if let buttonTitle = sender.title(for: .normal) {
-            currentAnswer = buttonTitle
-            sender.setTitleColor(UIColor.blue, for: .normal)
-            lastTappedButton  = sender
-        }
-        
+    
+    func wordWrappifyButtons(){
+        btnAnswer1.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        btnAnswer2.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        btnAnswer3.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
     }
     
+   
+    /* ------------------------------------------------------------------------------- */
+    
+    
+    /* -----------------------------  TIMER FUNCTIONS  -------------------------------- */
+    
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(QuestionscreenController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    func pauseTimer(){
+        timer.invalidate()
+    }
+    @objc func updateTimer(){
+        if currentQuiz!.noTimeLeft() {
+            goToNextQuestion()
+        } else {
+            currentQuiz!.timerTik()
+            lblTimer.text = String(currentQuiz!.timeLeftThisTurn)
+        }
+    }
+    func resetTimer(){
+        currentQuiz!.resetTimer()
+        lblTimer.text = String(currentQuiz!.timeLeftThisTurn)
+        
+    }
+    /* ------------------------------------------------------------------------------- */
+
+    
+    /* -----------------------------  LOADING FUNCTIONS  -------------------------------- */
     func loadSettings() -> Settings{
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let archiveUrl = documentsDirectory.appendingPathComponent("settings").appendingPathExtension("plist")
         
         //Set standard settings in case loading the saved settings fails
-        var currentSettings = Settings(secondsPerQuestion: 15, amountOfQuestions: 50, showAnswer: false, redo: false, saveQuiz: false)
+        var currentSettings = Settings(secondsPerQuestion: 15, amountOfQuestions: 50, showAnswer: false, redo: false)
         
         let propertyListDecoder = PropertyListDecoder()
         if let retrievedPersonalSettings = try? Data(contentsOf: archiveUrl), let decodedPersonalSettings = try? propertyListDecoder.decode(Settings.self, from: retrievedPersonalSettings){
@@ -248,7 +270,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         
             //If the amount of existing questions is larger than the amount of prefered questions then just take all the questions
             if currentSettings.amountOfQuestions >= questionList.questions.count{
-                currentQuiz = Quiz(questions: questionList.questions, currentSettings: currentSettings)
+                currentQuiz = Quiz(questions: questionList.questions.shuffled(), currentSettings: currentSettings)
 
             }
             
@@ -263,6 +285,9 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
             
         }
     }
+    /* ------------------------------------------------------------------------------- */
+
+    
     
     
     

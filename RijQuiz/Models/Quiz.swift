@@ -46,7 +46,7 @@ struct Quiz : Codable{
         let answerCorrect = questions[currentQuestion].checkIfAnswerCorrect()
         return answerCorrect
     }
-    mutating func answerQuestion(answer: String){
+    mutating func answerQuestion(with answer: String){
         questions[currentQuestion].userAnswer = answer
     }
     

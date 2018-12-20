@@ -14,13 +14,11 @@ struct Settings : Codable{
     var amountOfQuestions : Int
     var showAnswer : Bool
     var redo: Bool
-    var saveQuiz : Bool
     
-    init(secondsPerQuestion : Int, amountOfQuestions : Int, showAnswer : Bool, redo: Bool, saveQuiz : Bool) {
+    init(secondsPerQuestion : Int, amountOfQuestions : Int, showAnswer : Bool, redo: Bool) {
         self.secondsPerQuestion = secondsPerQuestion
         self.amountOfQuestions = amountOfQuestions
         self.showAnswer = showAnswer
         self.redo = redo
-        self.saveQuiz = saveQuiz
     }
 }
