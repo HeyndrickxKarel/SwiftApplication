@@ -22,6 +22,7 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setResultLabels(results: currentQuiz.calculateScore())
         
     }
@@ -99,8 +100,11 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
         if results.1 == 0 {
             lblSucceeded.text = "Hmmm..."
         } else {
-            switch (Double(results.0 / results.1)){
-            case ..<0.8001:
+            let percentageScore = Double(results.0) / Double(results.1)
+            print(percentageScore)
+            
+            switch (percentageScore){
+            case ..<0.81:
                 lblSucceeded.text = "Gebuisd!"
                 break
             default:
