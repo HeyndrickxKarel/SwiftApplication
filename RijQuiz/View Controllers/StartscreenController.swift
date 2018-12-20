@@ -10,6 +10,7 @@ import UIKit
 
 class StartscreenController: UIViewController {
     
+    @IBOutlet weak var btnStart: ShadowButton!
     @IBOutlet weak var lblStatus: Paragraph!
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let propertyListDecoder = PropertyListDecoder()
@@ -19,24 +20,25 @@ class StartscreenController: UIViewController {
     let questionsURL = "https://rijquiz-backend.herokuapp.com/api/questions"
     var currentQuestionList: QuestionList?
     
+    //This dispatchgroup is used when fetching new questions from the internet. The app has to wait until the questions are loaded
+    let dispatchGroup = DispatchGroup()
+    
     var loadingIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadQuestionList()
+        //As long as the questions are loading, the startscreen will be in a waiting state
+        displayWaitingState()
         
-        /*
-        //Display indiciator in case loading the questions from the web takes a while
-        startLoadingIndicator()
-        */
+        loadQuestionList()
         
         checkQuestionlistVersionAndUpdate()
         
-        /*
-        //Remove the loading indicator
-        stopLoadingIndicator()
-        */
+        //Whenever the async task for fetching the questions is running the startscreen will not enter the ready state.
+        dispatchGroup.notify(queue: .main){
+            self.displayReadyState()
+        }
 
     }
     
@@ -88,6 +90,21 @@ class StartscreenController: UIViewController {
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
+    func displayWaitingState(){
+        //Display indiciator in case loading the questions from the web takes a while
+        startLoadingIndicator()
+        
+        btnStart.alpha = 0.6
+        lblStatus.isHidden = false
+    }
+    func displayReadyState(){
+        //Remove the loading indicator
+        self.stopLoadingIndicator()
+        
+        self.lblStatus.isHidden = true
+        self.btnStart.alpha = 1.0
+    }
+    
     /* ------------------------------------------------------------------------------- */
     
     /* -----------------------------  LOADING FUNCTIONS  -------------------------------- */
@@ -105,8 +122,10 @@ class StartscreenController: UIViewController {
         
     }
     
-    
     func checkQuestionlistVersionAndUpdate(){
+        
+        dispatchGroup.enter()
+
         
         let url = URL(string: settingsURL)
         URLSession.shared.dataTask(with: url!){(data, reponse,err) in
@@ -124,15 +143,14 @@ class StartscreenController: UIViewController {
                     self.loadAndSaveQuestions(version: version)
                 }
                 
-                
             } catch let jsonError {
                 print (jsonError)
             }
             
+            self.dispatchGroup.leave()
+            
             }.resume()
     }
-    
-    
     
     func loadAndSaveQuestions(version : String){
         let url = URL(string: questionsURL)
@@ -162,14 +180,6 @@ class StartscreenController: UIViewController {
     }
     
     /* ------------------------------------------------------------------------------- */
-
-    
-   
-    
-   
-    
-
-    
 
     
 }

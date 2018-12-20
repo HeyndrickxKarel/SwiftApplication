@@ -100,7 +100,7 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
             lblSucceeded.text = "Hmmm..."
         } else {
             switch (Double(results.0 / results.1)){
-            case ..<0.8:
+            case ..<0.8001:
                 lblSucceeded.text = "Gebuisd!"
                 break
             default:

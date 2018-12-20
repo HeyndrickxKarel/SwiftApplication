@@ -24,7 +24,6 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     var currentQuiz : Quiz?
     
     var questionList : QuestionList! = nil
-    var fakeQuestions : [Question] = []
     var answerCorrect : Bool = false
     var currentAnswer : String = ""
     var lastTappedButton : UIButton!
@@ -57,6 +56,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
         goToNextQuestion()
     }
 
+    // When submitting an answer this function checks the saved settings "showAnswer" and "redo"
     func goToNextQuestion(){
         
         currentQuiz!.answerQuestion(with: currentAnswer)
