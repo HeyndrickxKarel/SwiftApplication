@@ -22,7 +22,7 @@ The entirety of the app is embedded in a Navigation Controller. As seen in the p
 
 ## Project hierarchy
 
-All the code of this project can be found in `RijQuiz/` when located in the main directory. This foulder has a fewsubfolders grouping certain functionality
+All the code of this project can be found in `RijQuiz/` when located in the main directory. This folder has a few subfolders grouping certain functionality
 
 | Folder           | Functionality                                                |
 | ---------------- | ------------------------------------------------------------ |
