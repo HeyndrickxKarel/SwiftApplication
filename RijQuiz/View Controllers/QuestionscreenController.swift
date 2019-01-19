@@ -114,6 +114,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
             } else {
                 currentQuiz!.lastQuestionWasAnswered()
                 performSegue(withIdentifier: "passQuizSegue", sender: self)
+                pauseTimer()
             }
         } else {
             if currentQuiz!.isThereAnotherQuestion() {
@@ -122,6 +123,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
             } else {
                 currentQuiz!.lastQuestionWasAnswered()
                 performSegue(withIdentifier: "passQuizSegue", sender: self)
+                pauseTimer()
             }
         }
     }

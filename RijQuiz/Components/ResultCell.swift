@@ -10,22 +10,18 @@ import UIKit
 
 class ResultCell: UICollectionViewCell {
     
-    @IBOutlet weak var btnQuestion: UIButton!
+    @IBOutlet weak var lblQuestion: UILabel!
     
-    var question : Question!
-    var resultsViewController : ResultsViewController!
+    @IBOutlet weak var imgSucceeded: UIImageView!
     
-    @IBAction func btnQuestionTapped(_ sender: Any) {
-        resultsViewController.showRightAnswer(question: question)
-    }
-    
-    func setQuestion(questionNr : Int, question : Question){
-        self.question = question
-        btnQuestion.setTitle(String(questionNr), for: .normal)
-        if question.checkIfAnswerCorrect(){
-            btnQuestion.setTitleColor(UIColor(rgbValue: 0x0f8736), for: .normal)
+    func setQuestion(questionNr : Int, answerCorrect : Bool){
+        lblQuestion.text = "Vraag " + String(questionNr)
+        if answerCorrect{
+            lblQuestion.textColor = UIColor(rgbValue: 0x0f8736)
+            imgSucceeded.image = UIImage(named: "check")
         } else {
-            btnQuestion.setTitleColor(UIColor.red, for: .normal)
+            lblQuestion.textColor = UIColor.red
+             imgSucceeded.image = UIImage(named: "error")
         }
     }
 }

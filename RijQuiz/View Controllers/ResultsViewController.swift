@@ -43,12 +43,35 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultCell", for: indexPath) as! ResultCell
         
-        cell.setQuestion(questionNr: (indexPath.item + 1), question: currentQuiz.questions[indexPath.item])
-        cell.resultsViewController = self
+        cell.setQuestion(questionNr: (indexPath.item + 1), answerCorrect: currentQuiz.questions[indexPath.item].checkIfAnswerCorrect())
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let question = currentQuiz.questions[indexPath.item]
+       showRightAnswer(question: question)
+    }
+    
+    /*
+     CODE for the 2 animation functions underneath found at https://stackoverflow.com/questions/45651816/animate-cell-when-pressed-using-swift-3 by Rob
+     CODE Implemented By Karel Heyndrickx
+     */
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? ResultCell {
+                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) as? ResultCell {
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -101,7 +124,6 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
             lblSucceeded.text = "Hmmm..."
         } else {
             let percentageScore = Double(results.0) / Double(results.1)
-            print(percentageScore)
             
             switch (percentageScore){
             case ..<0.81:
