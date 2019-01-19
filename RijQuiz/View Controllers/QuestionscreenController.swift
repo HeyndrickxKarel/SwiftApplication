@@ -90,6 +90,7 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
                     
                     createAlert(title: "Oops", message: "Je antwoord was fout maar je hebt nog een herkansing!")
                     currentQuiz!.nextAttempt()
+                    resetTimer()
 
                 }
       

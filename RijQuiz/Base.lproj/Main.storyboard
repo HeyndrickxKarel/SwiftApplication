@@ -223,7 +223,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0h-ff-jsV">
                                                 <rect key="frame" x="0.0" y="30" width="375" height="219.5"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oxM-gy-6Ds">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="oxM-gy-6Ds">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSj-qH-1WR" customClass="BottomBorderView" customModule="RijQuiz" customModuleProvider="target">
@@ -296,6 +296,15 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="nID-EW-vmL" secondAttribute="trailing" id="A8k-JZ-PDs"/>
+                                                            <constraint firstItem="B8B-j7-0kF" firstAttribute="leading" secondItem="oxM-gy-6Ds" secondAttribute="leading" id="Tgd-Tl-exe"/>
+                                                            <constraint firstItem="nID-EW-vmL" firstAttribute="leading" secondItem="oxM-gy-6Ds" secondAttribute="leading" id="aVy-8M-Tk7"/>
+                                                            <constraint firstItem="aSj-qH-1WR" firstAttribute="leading" secondItem="oxM-gy-6Ds" secondAttribute="leading" id="iR4-08-O8F"/>
+                                                            <constraint firstAttribute="trailing" secondItem="aSj-qH-1WR" secondAttribute="trailing" id="kcI-pU-csS"/>
+                                                            <constraint firstItem="aSj-qH-1WR" firstAttribute="top" secondItem="oxM-gy-6Ds" secondAttribute="top" id="qkm-rJ-sjl"/>
+                                                            <constraint firstAttribute="trailing" secondItem="B8B-j7-0kF" secondAttribute="trailing" id="yAh-99-Fq1"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -959,6 +968,6 @@
         <image name="chrono" width="13.313109397888184" height="13.313109397888184"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j4Z-dz-lfi"/>
+        <segue reference="7Fn-Ss-vT9"/>
     </inferredMetricsTieBreakers>
 </document>
