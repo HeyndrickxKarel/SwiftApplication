@@ -29,7 +29,6 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     var lastTappedButton : UIButton!
     
     var timer = Timer()
-    var isTimerRunning = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
