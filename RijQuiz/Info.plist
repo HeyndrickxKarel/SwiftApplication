@@ -36,7 +36,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>FontAwesome2.otf</string>
+		<string>FontAwesome.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

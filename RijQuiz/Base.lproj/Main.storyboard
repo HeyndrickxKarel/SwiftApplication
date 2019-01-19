@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="FontAwesome.otf">
+            <string>FontAwesome5FreeSolid</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--RijQuiz-->
         <scene sceneID="tne-QT-ifu">
@@ -40,46 +45,30 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tgl-Px-ahh" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tgl-Px-ahh" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40.5" width="315" height="52"/>
                                         <color key="backgroundColor" red="0.072693927140000003" green="0.65595256980000005" blue="0.25396710169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="2ZV-RN-Q6w"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="FontAwesome5FreeSolid" family="Font Awesome 5 Free" pointSize="20"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Instellingen">
-                                                    <attributes>
-                                                        <font key="NSFont" size="17" name="Futura-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
+                                        <state key="normal" title=" Instellingen"/>
                                         <connections>
                                             <segue destination="ivR-gu-u4E" kind="show" id="Szg-UP-z9w"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-qs-zDC" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSo-qs-zDC" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="112.5" width="315" height="52"/>
                                         <color key="backgroundColor" red="0.072693927140000003" green="0.65595256980000005" blue="0.25396710169999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="8wc-IQ-Hdp"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="FontAwesome5FreeSolid" family="Font Awesome 5 Free" pointSize="20"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Start quiz">
-                                                    <attributes>
-                                                        <font key="NSFont" size="17" name="Futura-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
+                                        <state key="normal" title=" Speel Quiz"/>
                                         <connections>
                                             <action selector="btnStartTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODs-Qg-Ryz"/>
                                             <action selector="btnStartTapped:" destination="Dvo-Px-KKn" eventType="touchUpInside" id="n1w-f9-vxt"/>
@@ -548,42 +537,28 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qN-ja-3fT">
                                                         <rect key="frame" x="0.0" y="158.5" width="375" height="143"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FvY-bf-taT" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
-                                                                <rect key="frame" x="30" y="61" width="315" height="52"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvY-bf-taT" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
+                                                                <rect key="frame" x="30" y="63" width="315" height="50"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="FontAwesome5FreeSolid" family="Font Awesome 5 Free" pointSize="20"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
-                                                                <state key="normal">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="Quiz opslaan">
-                                                                            <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name="Futura-Bold"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
+                                                                <state key="normal" title=" Quiz opslaan">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="btnSaveTapped:" destination="kAN-xy-3JG" eventType="touchUpInside" id="4KS-Ql-1VP"/>
                                                                     <segue destination="JxL-Mh-vSb" kind="unwind" unwindAction="unwindToStartscreen:" id="bJC-Az-t0u"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p9N-q8-Okf" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
-                                                                <rect key="frame" x="30" y="-6" width="315" height="52"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9N-q8-Okf" customClass="ShadowButton" customModule="RijQuiz" customModuleProvider="target">
+                                                                <rect key="frame" x="30" y="-2" width="315" height="50"/>
                                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="FontAwesome5FreeSolid" family="Font Awesome 5 Free" pointSize="20"/>
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <inset key="contentEdgeInsets" minX="0.0" minY="15" maxX="0.0" maxY="15"/>
-                                                                <state key="normal">
-                                                                    <attributedString key="attributedTitle">
-                                                                        <fragment content="Quiz beëindigen">
-                                                                            <attributes>
-                                                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <font key="NSFont" size="17" name="Futura-Bold"/>
-                                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                            </attributes>
-                                                                        </fragment>
-                                                                    </attributedString>
+                                                                <state key="normal" title=" Quiz eindigen">
+                                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="btnEndQuizTapped:" destination="kAN-xy-3JG" eventType="touchUpInside" id="V87-JF-dxX"/>
@@ -593,11 +568,13 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="FvY-bf-taT" firstAttribute="top" secondItem="p9N-q8-Okf" secondAttribute="bottom" constant="15" id="5ps-ik-yxV"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="p9N-q8-Okf" secondAttribute="trailing" constant="20" symbolic="YES" id="6XM-uN-Qy4"/>
                                                             <constraint firstItem="FvY-bf-taT" firstAttribute="leading" secondItem="5qN-ja-3fT" secondAttribute="leading" constant="30" id="WpS-Ws-EFg"/>
+                                                            <constraint firstAttribute="trailing" secondItem="FvY-bf-taT" secondAttribute="trailing" constant="30" id="XcX-r4-1cP"/>
                                                             <constraint firstAttribute="bottom" secondItem="FvY-bf-taT" secondAttribute="bottom" constant="30" id="kO9-v3-xRe"/>
                                                             <constraint firstItem="p9N-q8-Okf" firstAttribute="leading" secondItem="5qN-ja-3fT" secondAttribute="leading" constant="30" id="nfu-9R-vJb"/>
                                                             <constraint firstAttribute="trailing" secondItem="p9N-q8-Okf" secondAttribute="trailing" constant="30" id="rEc-gG-vz4"/>
-                                                            <constraint firstAttribute="trailing" secondItem="FvY-bf-taT" secondAttribute="trailing" constant="30" id="y6P-tn-t1M"/>
+                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FvY-bf-taT" secondAttribute="trailing" constant="20" symbolic="YES" id="y6P-tn-t1M"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
