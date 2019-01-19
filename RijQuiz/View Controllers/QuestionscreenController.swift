@@ -198,9 +198,9 @@ class QuestionscreenController: UIViewController, UITextFieldDelegate {
     }
     
     func resetButtonColors(){
-        btnAnswer1.setTitleColor(UIColor.darkGray, for: .normal)
-        btnAnswer2.setTitleColor(UIColor.darkGray, for: .normal)
-        btnAnswer3.setTitleColor(UIColor.darkGray, for: .normal)
+        btnAnswer1.setTitleColor(UIColor.white, for: .normal)
+        btnAnswer2.setTitleColor(UIColor.white, for: .normal)
+        btnAnswer3.setTitleColor(UIColor.white, for: .normal)
     }
     
     func wordWrappifyButtons(){

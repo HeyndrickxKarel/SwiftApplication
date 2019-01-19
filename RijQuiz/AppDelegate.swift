@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        UINavigationBar.appearance().tintColor = UIColorFromHex(rgbValue: 0x5da074, alpha: 1.0)
-        UINavigationBar.appearance().backgroundColor = UIColorFromHex(rgbValue: 0x13a741, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor(rgbValue: 0x5da074, alpha: 1.0)
+        UINavigationBar.appearance().backgroundColor = UIColor(rgbValue: 0x13a741, alpha: 1.0)
         
         return true
     }
@@ -44,14 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
-        let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
-        let blue = CGFloat(rgbValue & 0xFF)/256.0
-        
-        return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
     }
 
 }

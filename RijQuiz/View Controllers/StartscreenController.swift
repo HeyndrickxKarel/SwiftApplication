@@ -75,34 +75,17 @@ class StartscreenController: UIViewController {
     
     /* -----------------------------  GUI FUNCTIONS  -------------------------------- */
     
-    func startLoadingIndicator(){
-        
-        loadingIndicator.center = self.view.center
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        view.addSubview(loadingIndicator)
-        
-        loadingIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-    }
-    func stopLoadingIndicator(){
-        loadingIndicator.stopAnimating()
-        UIApplication.shared.endIgnoringInteractionEvents()
-    }
-    
     func displayWaitingState(){
-        //Display indiciator in case loading the questions from the web takes a while
-        startLoadingIndicator()
         
         btnStart.alpha = 0.6
+        btnStart.isEnabled = false
         lblStatus.isHidden = false
     }
     func displayReadyState(){
-        //Remove the loading indicator
-        self.stopLoadingIndicator()
         
         self.lblStatus.isHidden = true
         self.btnStart.alpha = 1.0
+        btnStart.isEnabled=true
     }
     
     /* ------------------------------------------------------------------------------- */
