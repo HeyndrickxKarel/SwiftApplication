@@ -126,7 +126,7 @@ class ResultsViewController: UIViewController, UICollectionViewDataSource,UIColl
             let percentageScore = Double(results.0) / Double(results.1)
             
             switch (percentageScore){
-            case ..<0.81:
+            case ..<0.80:
                 lblSucceeded.text = "Gebuisd!"
                 break
             default:

@@ -219,7 +219,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBk-T8-fXk" customClass="RoundedAnswerButton" customModule="RijQuiz" customModuleProvider="target">
-                                                                        <rect key="frame" x="12" y="39" width="351" height="22"/>
+                                                                        <rect key="frame" x="6" y="6" width="363" height="22"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                                                                         <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Button">
@@ -232,17 +232,17 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="GBk-T8-fXk" secondAttribute="trailing" constant="12" id="FE9-09-eHB"/>
-                                                                    <constraint firstItem="GBk-T8-fXk" firstAttribute="leading" secondItem="aSj-qH-1WR" secondAttribute="leading" constant="12" id="I3f-li-glA"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="GBk-T8-fXk" secondAttribute="bottom" constant="12" id="LqK-dq-M71"/>
-                                                                    <constraint firstItem="GBk-T8-fXk" firstAttribute="top" secondItem="aSj-qH-1WR" secondAttribute="top" constant="12" id="WmX-zm-i8N"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="GBk-T8-fXk" secondAttribute="trailing" constant="6" id="FE9-09-eHB"/>
+                                                                    <constraint firstItem="GBk-T8-fXk" firstAttribute="leading" secondItem="aSj-qH-1WR" secondAttribute="leading" constant="6" id="I3f-li-glA"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="GBk-T8-fXk" secondAttribute="bottom" constant="6" id="LqK-dq-M71"/>
+                                                                    <constraint firstItem="GBk-T8-fXk" firstAttribute="top" secondItem="aSj-qH-1WR" secondAttribute="top" constant="6" id="WmX-zm-i8N"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nID-EW-vmL">
                                                                 <rect key="frame" x="0.0" y="73" width="375" height="73.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNO-Zc-O6I" customClass="RoundedAnswerButton" customModule="RijQuiz" customModuleProvider="target">
-                                                                        <rect key="frame" x="12" y="12" width="351" height="24"/>
+                                                                        <rect key="frame" x="6" y="6" width="363" height="24"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                         <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Button">
@@ -255,17 +255,17 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="iNO-Zc-O6I" firstAttribute="top" secondItem="nID-EW-vmL" secondAttribute="top" constant="12" id="BsR-1V-KJN"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="iNO-Zc-O6I" secondAttribute="trailing" constant="12" id="gR0-56-ma7"/>
-                                                                    <constraint firstItem="iNO-Zc-O6I" firstAttribute="leading" secondItem="nID-EW-vmL" secondAttribute="leading" constant="12" id="tQM-CU-Q6a"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="iNO-Zc-O6I" secondAttribute="bottom" constant="12" id="wQO-Op-M1R"/>
+                                                                    <constraint firstItem="iNO-Zc-O6I" firstAttribute="top" secondItem="nID-EW-vmL" secondAttribute="top" constant="6" id="BsR-1V-KJN"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="iNO-Zc-O6I" secondAttribute="trailing" constant="6" id="gR0-56-ma7"/>
+                                                                    <constraint firstItem="iNO-Zc-O6I" firstAttribute="leading" secondItem="nID-EW-vmL" secondAttribute="leading" constant="6" id="tQM-CU-Q6a"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="iNO-Zc-O6I" secondAttribute="bottom" constant="6" id="wQO-Op-M1R"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8B-j7-0kF">
                                                                 <rect key="frame" x="0.0" y="146.5" width="375" height="73"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5jW-W2-4SN" customClass="RoundedAnswerButton" customModule="RijQuiz" customModuleProvider="target">
-                                                                        <rect key="frame" x="12" y="12" width="351" height="49"/>
+                                                                        <rect key="frame" x="6" y="6" width="363" height="61"/>
                                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                                         <inset key="contentEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Button">
@@ -278,10 +278,10 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="5jW-W2-4SN" firstAttribute="leading" secondItem="B8B-j7-0kF" secondAttribute="leading" constant="12" id="Om2-lY-Kvj"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="5jW-W2-4SN" secondAttribute="trailing" constant="12" id="bBr-zH-5pm"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="5jW-W2-4SN" secondAttribute="bottom" constant="12" id="sBw-Fb-28J"/>
-                                                                    <constraint firstItem="5jW-W2-4SN" firstAttribute="top" secondItem="B8B-j7-0kF" secondAttribute="top" constant="12" id="xWc-nk-43h"/>
+                                                                    <constraint firstItem="5jW-W2-4SN" firstAttribute="leading" secondItem="B8B-j7-0kF" secondAttribute="leading" constant="6" id="Om2-lY-Kvj"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="5jW-W2-4SN" secondAttribute="trailing" constant="6" id="bBr-zH-5pm"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="5jW-W2-4SN" secondAttribute="bottom" constant="6" id="sBw-Fb-28J"/>
+                                                                    <constraint firstItem="5jW-W2-4SN" firstAttribute="top" secondItem="B8B-j7-0kF" secondAttribute="top" constant="6" id="xWc-nk-43h"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
